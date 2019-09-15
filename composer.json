@@ -38,9 +38,9 @@
     },
     "scripts": {
         "check-all": [
-            "@test",
             "@check-style",
-            "@inspect"
+            "@inspect",
+            "@test"
         ],
         "test": "phpunit",
         "check-style": "phpcs src tests",

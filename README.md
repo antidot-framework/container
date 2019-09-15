@@ -69,15 +69,15 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [ico-version]: https://img.shields.io/packagist/v/antidot-fw/container.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/antidot-fw/container/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/antidot-fw/container.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/antidot-fw/container.svg?style=flat-square
+[ico-travis]: https://img.shields.io/scrutinizer/build/g/antidot-framework/container.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/antidot-framework/container.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/antidot-framework/container.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/antidot-fw/container.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/antidot-fw/container
-[link-travis]: https://travis-ci.org/antidot-fw/container
+[link-travis]: https://scrutinizer-ci.com/g/antidot-framework/container/
 [link-scrutinizer]: https://scrutinizer-ci.com/g/antidot-framework/container/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/antidot-framework/container/badges/coverage.png?b=master
-[link-downloads]: https://packagist.org/packages/antidot-framework/container
+[link-downloads]: https://packagist.org/packages/antidot-fw/container
 [link-author]: https://github.com/kpicaza
 [link-contributors]: ../../contributors
