@@ -7,8 +7,6 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-**Note:** Replace ```Koldo Picaza``` ```kpicaza``` ```https://github.com/kpicaza``` ```kpicaza@example.com``` ```antidot-fw``` ```container``` ```PSR-11 container implementation made for Antidot Framework``` with their correct values in [README.md](README.md), [CHANGELOG.md](CHANGELOG.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE.md](LICENSE.md) and [composer.json](composer.json) files, then delete this line. You can run `$ php prefill.php` in the command line to make all replacements at once. Delete the file prefill.php as well.
-
 This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
 PSRs you support to avoid any confusion with users and contributors.
 
@@ -78,8 +76,8 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [link-packagist]: https://packagist.org/packages/antidot-fw/container
 [link-travis]: https://travis-ci.org/antidot-fw/container
-[link-scrutinizer]: https://scrutinizer-ci.com/g/antidot-fw/container/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/antidot-fw/container
-[link-downloads]: https://packagist.org/packages/antidot-fw/container
+[link-scrutinizer]: https://scrutinizer-ci.com/g/antidot-framework/container/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/antidot-framework/container/badges/coverage.png?b=master
+[link-downloads]: https://packagist.org/packages/antidot-framework/container
 [link-author]: https://github.com/kpicaza
 [link-contributors]: ../../contributors

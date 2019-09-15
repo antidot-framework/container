@@ -71,7 +71,7 @@ class ContainerBuilderTest extends TestCase
         $container = ContainerBuilder::build([
             'dependencies' => [
                 'factories' => [
-                    'some.test.class' => function(ContainerInterface $container) {
+                    'some.test.class' => function (ContainerInterface $container) {
                         return new \SplStack();
                     },
                 ]

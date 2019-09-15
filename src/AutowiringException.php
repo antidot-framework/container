@@ -3,7 +3,6 @@
 
 namespace Antidot\Container;
 
-
 use Psr\Container\ContainerExceptionInterface;
 use RuntimeException;
 

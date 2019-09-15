@@ -112,7 +112,7 @@ class ContainerTest extends TestCase
         $this->assertSame($testService->getStack(), $someTestClass2->getStack());
     }
 
-    public function testItShouldThrowExceptionWhenItemsAreNotConfiguredInstancesOrCallablesWithOutAutowiringEnabled(): void
+    public function testItShouldThrowExceptionWhenAreNotConfiguredInstancesOrCallablesWithOutAutowiringEnabled(): void
     {
         $this->expectException(NotFoundExceptionInterface::class);
 

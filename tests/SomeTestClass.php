@@ -3,8 +3,6 @@
 
 namespace AntidotTest\Container;
 
-
-
 class SomeTestClass
 {
     private $stack;
@@ -14,8 +12,14 @@ class SomeTestClass
      */
     private $storage;
 
-    public function __construct(\SplStack $stack, \SplQueue $queue, \SplObjectStorage $storage, array $foo = [], string $bar = 'foo', array $bazz = [])
-    {
+    public function __construct(
+        \SplStack $stack,
+        \SplQueue $queue,
+        \SplObjectStorage $storage,
+        array $foo = [],
+        string $bar = 'foo',
+        array $bazz = []
+    ) {
         $this->stack = $stack;
         $this->queue = $queue;
         $this->storage = $storage;

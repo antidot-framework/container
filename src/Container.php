@@ -96,7 +96,7 @@ class Container implements ContainerInterface
         $parameters = (new ReflectionMethod($className, '__construct'))->getParameters();
 
         $this->parameters[$id] = array_map(function (ReflectionParameter $parameter) use ($id) {
-            $type = $parameter->getType() ? $parameter->getType()->getName() : '';
+            $type = null === $parameter->getType() ? '' : $parameter->getType()->getName();
             if (array_key_exists($parameter->getName(), $this->parameters[$id])) {
                 if (is_array($this->parameters[$id][$parameter->getName()])
                     || $this->parameters[$id][$parameter->getName()] instanceof $type) {

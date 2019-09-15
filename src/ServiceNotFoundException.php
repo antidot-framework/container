@@ -3,7 +3,6 @@
 
 namespace Antidot\Container;
 
-
 use InvalidArgumentException;
 use Psr\Container\NotFoundExceptionInterface;
 
