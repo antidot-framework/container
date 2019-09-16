@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Antidot\Container;
 
-
 use Psr\Container\ContainerInterface;
 use ReflectionClass;
 use ReflectionMethod;
