@@ -15,7 +15,6 @@ class InstanceResolver
     private $config;
     private $instances;
     private $parameters;
-    /** @var ContainerInterface */
     private $container;
 
     public function __construct(ContainerConfig $config, InstanceCollection $instances, ContainerInterface $container)
@@ -29,21 +28,8 @@ class InstanceResolver
     public function setInstanceOf(string $id): void
     {
         if ($this->config->has($id)) {
-            if (is_callable($this->config->get($id))) {
-                $callable = $this->config->get($id);
-                $this->instances->set($id, $callable($this->container));
-                return;
-            }
-
-            if (is_string($this->config->get($id)) && class_exists($this->config->get($id))) {
-                $this->instances->set($id, $this->getAnInstanceOf($id, $this->config->get($id)));
-                return;
-            }
-
-            if (is_string($this->config->get($id)) && $this->container->has($this->config->get($id))) {
-                $this->instances->set($id, $this->container->get($this->config->get($id)));
-                return;
-            }
+            $this->setConfiguredInstance($id);
+            return;
         }
 
         if (class_exists($id)) {
@@ -102,5 +88,24 @@ class InstanceResolver
         }
 
         return $this->parameters->get($id)[$parameter->getName()];
+    }
+
+    private function setConfiguredInstance(string $id): void
+    {
+        if (is_callable($this->config->get($id))) {
+            $callable = $this->config->get($id);
+            $this->instances->set($id, $callable($this->container));
+            return;
+        }
+
+        if (is_string($this->config->get($id)) && class_exists($this->config->get($id))) {
+            $this->instances->set($id, $this->getAnInstanceOf($id, $this->config->get($id)));
+            return;
+        }
+
+        if (is_string($this->config->get($id)) && $this->container->has($this->config->get($id))) {
+            $this->instances->set($id, $this->container->get($this->config->get($id)));
+            return;
+        }
     }
 }
