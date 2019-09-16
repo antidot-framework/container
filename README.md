@@ -1,4 +1,4 @@
-# container
+# Antidot Framework DI Container
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
@@ -7,37 +7,34 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
+Dependency injection library built for Antidot Framework respecting PSR-11 standard
 
-## Structure
-
-If any of the following are applicable to your project, then the directory structure should follow industry best practices by being named the following.
-
-```
-bin/        
-build/
-docs/
-config/
-src/
-tests/
-vendor/
-```
-
+Can be used together with Antidot Framework or as a standalone piece for your application or customized framework
 
 ## Install
 
 Via Composer
 
-``` bash
-$ composer require antidot-fw/container
+```bash
+$ composer require antidot-fw/container:dev-master
 ```
 
-## Usage
+## Simple Usage
 
-``` php
-$skeleton = new Antidot\Container();
-echo $skeleton->echoPhrase('Hello, League!');
+```php
+<?php
+$container = ContainerBuilder::build([
+    'config' => [],
+    'parameters' => [],
+    'dependencies' => [
+        'invokables' => [
+            'some.service' => Some::class,
+        ]
+    ],
+], true);
+if ($container->has('some.service')) {
+    $service = $container->get('some.service');
+}
 ```
 
 ## Change log
