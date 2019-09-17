@@ -17,15 +17,21 @@ class ContainerBuilder
     {
         $self = new self();
 
-        return new Container($self->parseConfigFor($dependencies), $autowire);
+        return new Container(
+            $self->parseConfigFor($dependencies),
+            $autowire
+        );
     }
 
-    private function parseConfigFor(array $dependencies): array
+    private function parseConfigFor(array $dependencies): ContainerConfig
     {
         $containerConfig = [
             'config' => $dependencies,
             'parameters' => [],
         ];
+        if (isset($dependencies['dependencies']['delegators'])) {
+            $containerConfig['delegators'] = $dependencies['dependencies']['delegators'];
+        }
         foreach ($dependencies['dependencies']['invokables'] ?? [] as $name => $invokable) {
             $containerConfig[$name] = $invokable;
         }
@@ -58,6 +64,6 @@ class ContainerBuilder
             $containerConfig[$name] = $conditional['class'];
         }
 
-        return $containerConfig;
+        return new ContainerConfig($containerConfig);
     }
 }

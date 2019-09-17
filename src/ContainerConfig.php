@@ -22,4 +22,14 @@ class ContainerConfig
     {
         return array_key_exists($id, $this->config);
     }
+
+    public function unset(string $id): void
+    {
+        unset($this->config[$id]);
+    }
+
+    public function set(string $id, $param): void
+    {
+        $this->config[$id] = $param;
+    }
 }

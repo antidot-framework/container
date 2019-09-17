@@ -14,11 +14,13 @@ class Container implements ContainerInterface
     /** @var InstanceResolver */
     private $resolver;
 
-    public function __construct(array $configuredDependencies, bool $autowire)
+    public function __construct(ContainerConfig $configuredDependencies, bool $autowire)
     {
-        $this->configuredDependencies = new ContainerConfig($configuredDependencies);
+        $this->configuredDependencies = $configuredDependencies->has('delegators')
+            ? (new MarshalDelegatorsConfig())($this, $configuredDependencies)
+            : $configuredDependencies;
         $this->loadedDependencies = new InstanceCollection();
-        $this->loadedDependencies->set('config', $configuredDependencies['config']);
+        $this->loadedDependencies->set('config', $configuredDependencies->get('config'));
         $this->autowire = $autowire;
     }
 

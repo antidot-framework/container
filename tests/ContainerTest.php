@@ -6,6 +6,7 @@ namespace AntidotTest\Container;
 
 use Antidot\Container\AutowiringException;
 use Antidot\Container\Container;
+use Antidot\Container\ContainerConfig;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
@@ -18,12 +19,12 @@ class ContainerTest extends TestCase
 {
     public function testItShouldHaveConfiguredInstancesWithAutowiringEnabled(): void
     {
-        $container = new Container([
+        $container = new Container(new ContainerConfig([
             'config' => [],
             'parameters' => [],
             'some.service' => SplObjectStorage::class,
             'some.other.service' => SplQueue::class,
-        ], true);
+        ]), true);
 
         $this->assertEquals([], $container->get('config'));
         $testService = $container->get('some.service');
@@ -34,7 +35,7 @@ class ContainerTest extends TestCase
 
     public function testItShouldHaveConfiguredInstancesFromCallablesWithOutAutowiringEnabled(): void
     {
-        $container = new Container([
+        $container = new Container(new ContainerConfig([
             'config' => [],
             'parameters' => [],
             'some.service' => function (ContainerInterface $container) {
@@ -50,7 +51,7 @@ class ContainerTest extends TestCase
                 }
 
             },
-        ], false);
+        ]), false);
 
         $this->assertEquals([], $container->get('config'));
         $this->assertInstanceOf(SplObjectStorage::class, $container->get('some.service'));
@@ -60,14 +61,14 @@ class ContainerTest extends TestCase
 
     public function testItShouldKnowAllConfiguredAndLoadedServices(): void
     {
-        $container = new Container([
+        $container = new Container(new ContainerConfig([
             'config' => [],
             'parameters' => [],
             'some.service' => function (ContainerInterface $container) {
                 $this->assertInstanceOf(Container::class, $container);
                 return new SplObjectStorage();
             },
-        ], false);
+        ]), false);
 
         $this->assertEquals([], $container->get('config'));
         $this->assertTrue($container->has('some.service'));
@@ -76,7 +77,7 @@ class ContainerTest extends TestCase
 
     public function testItShouldDistinctBetweenFactoryAndService(): void
     {
-        $container = new Container([
+        $container = new Container(new ContainerConfig([
             'config' => [],
             'parameters' => [
                 'some.other.service' => [
@@ -94,7 +95,7 @@ class ContainerTest extends TestCase
             'some.other.service.class' => SplQueue::class,
             'some.alias' => 'some.other.type.service',
             SplStack::class => SplStack::class,
-        ], true);
+        ]), true);
 
         $container->get('some.alias');
         $this->assertEquals([], $container->get('config'));
@@ -116,11 +117,11 @@ class ContainerTest extends TestCase
     {
         $this->expectException(NotFoundExceptionInterface::class);
 
-        $container = new Container([
+        $container = new Container(new ContainerConfig([
             'config' => [],
             'parameters' => [],
             'some.service' => SplObjectStorage::class,
-        ], false);
+        ]), false);
 
         $container->get('some.service');
     }
@@ -129,10 +130,10 @@ class ContainerTest extends TestCase
     {
         $this->expectException(AutowiringException::class);
 
-        $container = new Container([
+        $container = new Container(new ContainerConfig([
             'config' => [],
             'parameters' => [],
-        ], true);
+        ]), true);
 
         $container->get(InvalidArgumentException::class);
     }
