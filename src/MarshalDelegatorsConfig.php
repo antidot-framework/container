@@ -26,7 +26,7 @@ class MarshalDelegatorsConfig
             });
             $dependencies->set(
                 $service,
-                static function(ContainerInterface $container) use ($service) {
+                static function (ContainerInterface $container) use ($service) {
                     $callable = $container->get(ContainerDelegatorFactory::class);
                     return $callable($container, $service);
                 }
