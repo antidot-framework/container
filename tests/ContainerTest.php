@@ -167,6 +167,5 @@ class ContainerTest extends TestCase
         $this->assertCount(1, $stack);
         $stack->rewind();
         $this->assertEquals('Hello World!!!', $stack->current());
-
     }
 }
