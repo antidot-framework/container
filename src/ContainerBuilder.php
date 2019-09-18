@@ -28,10 +28,9 @@ class ContainerBuilder
         $containerConfig = [
             'config' => $dependencies,
             'parameters' => [],
+            'delegators' => $dependencies['dependencies']['delegators'] ?? [],
         ];
-        if (isset($dependencies['dependencies']['delegators'])) {
-            $containerConfig['delegators'] = $dependencies['dependencies']['delegators'];
-        }
+
         foreach ($dependencies['dependencies']['invokables'] ?? [] as $name => $invokable) {
             $containerConfig[$name] = $invokable;
         }

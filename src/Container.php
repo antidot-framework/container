@@ -17,7 +17,7 @@ class Container implements ContainerInterface
     public function __construct(ContainerConfig $configuredDependencies, bool $autowire)
     {
         $this->configuredDependencies = $configuredDependencies->has('delegators')
-            ? (new MarshalDelegatorsConfig())($this, $configuredDependencies)
+            ? (new MarshalDelegatorsConfig())($configuredDependencies)
             : $configuredDependencies;
         $this->loadedDependencies = new InstanceCollection();
         $this->loadedDependencies->set('config', $configuredDependencies->get('config'));

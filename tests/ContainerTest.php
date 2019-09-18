@@ -137,4 +137,36 @@ class ContainerTest extends TestCase
 
         $container->get(InvalidArgumentException::class);
     }
+
+
+    public function testIShouldPrepareContainerToGiveADecoratedInstancesForGivenClass(): void
+    {
+        $container = new Container(new ContainerConfig([
+            'config' => [],
+            'parameters' => [],
+            'some.service' => function () {
+                return new\SplStack();
+            },
+            'some.service.delegator.factory' => function () {
+                return function (ContainerInterface $container, string $name, callable $callback): \SplStack {
+                    /** @var \SplStack $stack */
+                    $stack = $callback();
+                    $stack->push('Hello World!!!');
+
+                    return $stack;
+                };
+            },
+            'delegators' => [
+                'some.service' => [
+                    'some.service.delegator.factory'
+                ]
+            ],
+        ]), true);
+        /** @var \SplStack $stack */
+        $stack = $container->get('some.service');
+        $this->assertCount(1, $stack);
+        $stack->rewind();
+        $this->assertEquals('Hello World!!!', $stack->current());
+
+    }
 }

@@ -7,17 +7,12 @@ namespace Antidot\Container;
 use Psr\Container\ContainerInterface;
 use function is_callable;
 
-/**
- *
- * Class MarshalDelegatorsConfig
- * @package Antidot\Container
- */
 class MarshalDelegatorsConfig
 {
-    public function __invoke(ContainerInterface $container, ContainerConfig $dependencies): ContainerConfig
+    public function __invoke(ContainerConfig $dependencies): ContainerConfig
     {
         foreach ($dependencies->get('delegators') as $service => $delegatorNames) {
-            $factory = $this->delegateFactories($container, $dependencies, $service);
+            $factory = $this->delegateFactories($dependencies, $service);
             if (!is_callable($factory)) {
                 continue;
             }
@@ -37,7 +32,6 @@ class MarshalDelegatorsConfig
     }
 
     private function delegateFactories(
-        ContainerInterface $container,
         ContainerConfig $dependencies,
         string $service
     ): ?callable {
@@ -46,7 +40,7 @@ class MarshalDelegatorsConfig
         }
         // Marshal from factory
         $serviceFactory = $dependencies->get($service);
-        return static function () use ($service, $serviceFactory, $container) {
+        return static function (ContainerInterface $container) use ($service, $serviceFactory) {
             return is_callable($serviceFactory)
                 ? $serviceFactory($container, $service)
                 : (new $serviceFactory())($container, $service);

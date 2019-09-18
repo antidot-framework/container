@@ -67,13 +67,17 @@ final class ContainerDelegatorFactory
         return array_reduce(
             $this->delegators,
             static function ($instance, $delegatorName) use ($serviceName, $container) {
+                if (is_string($delegatorName) && $container->has($delegatorName)) {
+                    $delegatorName = $container->get($delegatorName);
+                }
+
                 $delegator = is_callable($delegatorName) ? $delegatorName : new $delegatorName();
 
                 return $delegator($container, $serviceName, static function () use ($instance) {
                     return $instance;
                 });
             },
-            $factory()
+            $factory($container)
         );
     }
 }
