@@ -23,6 +23,11 @@ $ composer require antidot-fw/container:dev-master
 
 ```php
 <?php
+
+declare(strict_types=1);
+
+use Antidot\Container\ContainerBuilder;
+
 $container = ContainerBuilder::build([
     'config' => [],
     'parameters' => [],
