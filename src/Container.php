@@ -8,11 +8,10 @@ use Psr\Container\ContainerInterface;
 
 class Container implements ContainerInterface
 {
-    private $autowire;
-    private $loadedDependencies;
-    private $configuredDependencies;
-    /** @var InstanceResolver */
-    private $resolver;
+    private bool $autowire;
+    private InstanceCollection $loadedDependencies;
+    private ContainerConfig $configuredDependencies;
+    private InstanceResolver $resolver;
 
     public function __construct(ContainerConfig $configuredDependencies, bool $autowire)
     {
@@ -22,6 +21,7 @@ class Container implements ContainerInterface
         $this->loadedDependencies = new InstanceCollection();
         $this->loadedDependencies->set('config', $configuredDependencies->get('config'));
         $this->autowire = $autowire;
+        $this->resolver = new InstanceResolver($this->configuredDependencies, $this->loadedDependencies, $this);
     }
 
     public function get($id)
@@ -31,7 +31,6 @@ class Container implements ContainerInterface
         }
 
         if ($this->autowire) {
-            $this->setInstanceResolver();
             $this->resolver->setInstanceOf($id);
             return $this->loadedDependencies->get($id);
         }
@@ -59,12 +58,5 @@ class Container implements ContainerInterface
         }
 
         throw ServiceNotFoundException::forId($id);
-    }
-
-    private function setInstanceResolver(): void
-    {
-        if (null === $this->resolver) {
-            $this->resolver = new InstanceResolver($this->configuredDependencies, $this->loadedDependencies, $this);
-        }
     }
 }

@@ -6,7 +6,7 @@ namespace Antidot\Container;
 
 class InstanceCollection
 {
-    private $instances;
+    private array $instances;
 
     public function __construct()
     {

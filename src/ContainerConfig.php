@@ -6,7 +6,7 @@ namespace Antidot\Container;
 
 class ContainerConfig
 {
-    private $config;
+    private array $config;
 
     public function __construct(array $config)
     {

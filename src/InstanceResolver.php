@@ -11,10 +11,10 @@ use ReflectionParameter;
 
 class InstanceResolver
 {
-    private $config;
-    private $instances;
-    private $parameters;
-    private $container;
+    private ContainerConfig $config;
+    private InstanceCollection $instances;
+    private ParamCollection $parameters;
+    private ContainerInterface $container;
 
     public function __construct(ContainerConfig $config, InstanceCollection $instances, ContainerInterface $container)
     {

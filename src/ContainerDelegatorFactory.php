@@ -4,15 +4,12 @@ declare(strict_types=1);
 
 namespace Antidot\Container;
 
+use Closure;
 use Psr\Container\ContainerInterface;
 use function array_reduce;
 use function is_callable;
 
 /**
- * @deprecated will remove in version 1.0.0
- *
- * Aura.Di-compatible delegator factory.
- *
  * Map an instance of this:
  *
  * <code>
@@ -33,14 +30,7 @@ use function is_callable;
  */
 final class ContainerDelegatorFactory
 {
-    /**
-     * @var array Either delegator factory names or instances.
-     */
-    private $delegators;
-
-    /**
-     * @var callable
-     */
+    private array $delegators;
     private $factory;
 
     /**
