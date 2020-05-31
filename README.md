@@ -26,15 +26,13 @@ $ composer require antidot-fw/container:dev-master
 
 declare(strict_types=1);
 
-use Antidot\Container\ContainerBuilder;
+use Antidot\Container\Builder;
 
-$container = ContainerBuilder::build([
+$container = Builder::build([
     'config' => [],
     'parameters' => [],
-    'dependencies' => [
-        'invokables' => [
-            'some.service' => Some::class,
-        ]
+    'services' => [
+        'some.service' => Some::class,
     ],
 ], true);
 if ($container->has('some.service')) {
