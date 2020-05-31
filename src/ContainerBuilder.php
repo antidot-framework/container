@@ -7,6 +7,10 @@ namespace Antidot\Container;
 use Psr\Container\ContainerInterface;
 use ReflectionMethod;
 
+/**
+ * Class ContainerBuilder
+ * @deprecated This class will be removed in 1.0.0 version
+ */
 class ContainerBuilder
 {
     private function __construct()
