@@ -40,7 +40,6 @@ if ($container->has('some.service')) {
 
 ## Config
 
-It uses [Laminas Service Manager config](https://docs.laminas.dev/laminas-servicemanager/configuring-the-service-manager/) alike pattern, 
 and it allows some different options like dependencies with conditional parameters.
 
 It can be configured with two different types, services and factories, services tels to the container how to instantiate a new reference to a class or identifier.  

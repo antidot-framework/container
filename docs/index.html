@@ -10,6 +10,7 @@
 </head>
 <body>
 <div id="app"></div>
+<script src="//unpkg.com/docsify-edit-on-github/index.js"></script>
 <script>
     window.$docsify = {
         coverpage: true,
@@ -24,7 +25,12 @@
             theme      : 'material', // default
             tabComments: true,      // default
             tabHeadings: true       // default
-        }
+        },
+        plugins: [
+            EditOnGithubPlugin.create(
+                'https://github.com/antidot-framework/container/blob/master/docs/'
+            ),
+        ]
     }
 </script>
 <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
