@@ -10,6 +10,9 @@ use ReflectionMethod;
 
 class Builder
 {
+    /**
+     * @param array<mixed> $dependencies
+     */
     public static function build(array $dependencies, bool $autowire = false): ContainerInterface
     {
         $self = new self();
@@ -20,6 +23,9 @@ class Builder
         );
     }
 
+    /**
+     * @param array<mixed> $dependencies
+     */
     private function parseConfigFor(array $dependencies): ContainerConfig
     {
         $containerConfig = [
@@ -64,6 +70,9 @@ class Builder
         return new ContainerConfig($containerConfig);
     }
 
+    /**
+     * @param mixed $service
+     */
     private function assertValidService($service): void
     {
         if (is_array($service)) {
@@ -78,7 +87,8 @@ class Builder
 
         if (false === is_string($service)) {
             throw new InvalidArgumentException(
-                'Invalid Container Configuration, Service "class", Simple or autowired dependencies must have a string value.'
+                'Invalid Container Configuration, Service "class", Simple or autowired dependencies must have'
+                . ' a string value.'
             );
         }
     }

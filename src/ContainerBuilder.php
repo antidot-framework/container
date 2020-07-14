@@ -17,6 +17,9 @@ class ContainerBuilder
     {
     }
 
+    /**
+     * @param array<mixed> $dependencies
+     */
     public static function build(array $dependencies, bool $autowire = false): ContainerInterface
     {
         $self = new self();
@@ -27,6 +30,9 @@ class ContainerBuilder
         );
     }
 
+    /**
+     * @param array<mixed> $dependencies
+     */
     private function parseConfigFor(array $dependencies): ContainerConfig
     {
         $containerConfig = [

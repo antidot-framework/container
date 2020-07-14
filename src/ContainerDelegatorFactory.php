@@ -30,11 +30,13 @@ use function is_callable;
  */
 final class ContainerDelegatorFactory
 {
+    /** @var array<mixed> */
     private array $delegators;
+    /** @var callable  */
     private $factory;
 
     /**
-     * @param array $delegators Array of delegator factory names or instances.
+     * @param array<mixed> $delegators Array of delegator factory names or instances.
      * @param callable $factory Callable that can return the initial instance.
      */
     public function __construct(array $delegators, callable $factory)

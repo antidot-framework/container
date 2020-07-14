@@ -46,7 +46,7 @@ class Container implements ContainerInterface
             || $this->configuredDependencies->has($id);
     }
 
-    private function getService(string $id)
+    private function getService(string $id): object
     {
         if (is_callable($this->configuredDependencies->get($id))) {
             $callableService = $this->configuredDependencies->get($id);
