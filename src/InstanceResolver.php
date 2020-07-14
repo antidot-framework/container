@@ -4,10 +4,15 @@ declare(strict_types=1);
 
 namespace Antidot\Container;
 
+use InvalidArgumentException;
 use Psr\Container\ContainerInterface;
 use ReflectionClass;
 use ReflectionMethod;
+use ReflectionNamedType;
 use ReflectionParameter;
+
+use function class_exists;
+use function sprintf;
 
 class InstanceResolver
 {
@@ -36,9 +41,12 @@ class InstanceResolver
         }
     }
 
-    private function getAnInstanceOf(string $id, string $className)
+    private function getAnInstanceOf(string $id, string $className): object
     {
         $this->parameters->set($id, $this->parameters->has($id) ? $this->parameters->get($id) : []);
+        if (false === class_exists($className)) {
+            throw new InvalidArgumentException(sprintf('Class "%s" not found for service id "%s".', $className, $id));
+        }
         $instance = new ReflectionClass($className);
         if (false === $instance->hasMethod('__construct')) {
             return $instance->newInstance();
@@ -53,9 +61,15 @@ class InstanceResolver
         return $instance->newInstanceArgs($this->parameters->get($id));
     }
 
+    /**
+     * @return mixed|object
+     * @throws \ReflectionException
+     */
     private function makeParameter(string $id, ReflectionParameter $parameter)
     {
-        $type = null === $parameter->getType() ? '' : $parameter->getType()->getName();
+        /** @var null|ReflectionNamedType $paramType */
+        $paramType = $parameter->getType();
+        $type = null === $paramType ? '' : $paramType->getName();
         if (array_key_exists($parameter->getName(), $this->parameters->get($id))) {
             return $this->getExistingParameter($id, $parameter, $type);
         }
@@ -75,7 +89,11 @@ class InstanceResolver
         return $this->getAnInstanceOf($type, $type);
     }
 
-    private function getExistingParameter(string $id, ReflectionParameter $parameter, $type)
+    /**
+     * @param string $type
+     * @return mixed
+     */
+    private function getExistingParameter(string $id, ReflectionParameter $parameter, string $type)
     {
         if (is_array($this->parameters->get($id)[$parameter->getName()])
             || $this->parameters->get($id)[$parameter->getName()] instanceof $type) {
