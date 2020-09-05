@@ -38,7 +38,12 @@ class Builder
             'delegators' => $dependencies['delegators'] ?? [],
         ];
 
-        foreach ($dependencies['factories'] ?? [] as $name => $factory) {
+        $factories = array_merge(
+            $dependencies['factories'] ?? [],
+            $dependencies['dependencies']['factories'] ?? []
+        );
+
+        foreach ($factories as $name => $factory) {
             $containerConfig[$name] = static function (ContainerInterface $container) use ($factory) {
                 if (is_array($factory)) {
                     $class = array_shift($factory);
