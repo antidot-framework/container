@@ -1,6 +1,16 @@
 # Changelog
 
-## [0.1.2](https://github.com/antidot-framework/container/tree/0.1.2)
+## [0.1.3](https://github.com/antidot-framework/container/tree/0.1.3) (2020-09-05)
+
+[Full Changelog](https://github.com/antidot-framework/container/compare/0.1.2...0.1.3)
+
+**Merged pull requests:**
+
+- fix laminas config factories support [\#12](https://github.com/antidot-framework/container/pull/12) ([kpicaza](https://github.com/kpicaza))
+- Update phpro/grumphp requirement from ^0.17.1 || ^0.19.0 || ^0.21.0 to ~0.17 [\#11](https://github.com/antidot-framework/container/pull/11) ([dependabot[bot]](https://github.com/apps/dependabot))
+- update phpunit configuration format [\#10](https://github.com/antidot-framework/container/pull/10) ([kpicaza](https://github.com/kpicaza))
+
+## [0.1.2](https://github.com/antidot-framework/container/tree/0.1.2) (2020-08-29)
 
 [Full Changelog](https://github.com/antidot-framework/container/compare/0.1.1...0.1.2)
 
