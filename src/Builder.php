@@ -118,7 +118,7 @@ class Builder
 
     /**
      * @param string $service
-     * @param array<string, string> $containerConfig
+     * @param array<int|string, string> $containerConfig
      */
     private function assertValidAlias(string $service, array $containerConfig): void
     {
