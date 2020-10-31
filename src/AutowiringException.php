@@ -9,6 +9,11 @@ use RuntimeException;
 
 class AutowiringException extends RuntimeException implements ContainerExceptionInterface
 {
+    public static function withDependency(string $id): self
+    {
+        return new self(sprintf('Cannot autowire dependency $%s.', $id));
+    }
+
     public static function withNoType(string $id, string $parameter): self
     {
         return new self(sprintf('Cannot autowire untyped parameter $%s in service %s.', $parameter, $id));

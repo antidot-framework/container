@@ -134,7 +134,7 @@ class ContainerTest extends TestCase
             'parameters' => [],
         ]), true);
 
-        $container->get(InvalidArgumentException::class);
+        $container->get(ContainerInterface::class);
     }
 
 

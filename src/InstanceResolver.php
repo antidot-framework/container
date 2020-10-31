@@ -12,6 +12,8 @@ use ReflectionNamedType;
 use ReflectionParameter;
 
 use function class_exists;
+use function dump;
+use function interface_exists;
 use function sprintf;
 
 class InstanceResolver
@@ -38,6 +40,10 @@ class InstanceResolver
 
         if (class_exists($id)) {
             $this->instances->set($id, $this->getAnInstanceOf($id, $id));
+        }
+
+        if (interface_exists($id)) {
+            throw AutowiringException::withDependency($id);
         }
     }
 
@@ -96,7 +102,7 @@ class InstanceResolver
     private function getExistingParameter(string $id, ReflectionParameter $parameter, string $type)
     {
         if (is_array($this->parameters->get($id)[$parameter->getName()])
-            || $this->parameters->get($id)[$parameter->getName()] instanceof $type
+            || ($this->parameters->get($id)[$parameter->getName()] instanceof $type)
         ) {
             return $this->parameters->get($id)[$parameter->getName()];
         }
