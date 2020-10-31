@@ -49,7 +49,7 @@ class ContainerTest extends TestCase
                 {
                     return new SplStack();
                 }
-            },
+            }
         ]), false);
 
         $this->assertEquals([], $container->get('config'));
