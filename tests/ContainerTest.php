@@ -144,7 +144,7 @@ class ContainerTest extends TestCase
             'config' => [],
             'parameters' => [],
             'some.service' => function () {
-                return new\SplStack();
+                return new \SplStack();
             },
             'some.service.delegator.factory' => function () {
                 return function (ContainerInterface $container, string $name, callable $callback): \SplStack {
