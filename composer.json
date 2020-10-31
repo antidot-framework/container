@@ -38,13 +38,13 @@
     },
     "scripts": {
         "check-all": [
-            "@check-style",
+            "@cs-check",
             "@inspect",
             "@test"
         ],
         "test": "phpunit",
-        "check-style": "phpcs src tests",
-        "fix-style": "phpcbf src tests",
+        "cs-check": "phpcs src tests",
+        "cs-fix": "phpcbf src tests",
         "inspect": "phpstan analyse src -l7 --ansi"
     },
     "extra": {

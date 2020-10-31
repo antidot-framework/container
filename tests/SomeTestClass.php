@@ -1,6 +1,5 @@
 <?php
 
-
 namespace AntidotTest\Container;
 
 class SomeTestClass

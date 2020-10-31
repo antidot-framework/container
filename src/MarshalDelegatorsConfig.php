@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Antidot\Container;
 
 use Psr\Container\ContainerInterface;
+
 use function is_callable;
 
 class MarshalDelegatorsConfig
