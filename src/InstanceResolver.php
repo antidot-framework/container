@@ -101,7 +101,8 @@ class InstanceResolver
      */
     private function getExistingParameter(string $id, ReflectionParameter $parameter, string $type)
     {
-        if (is_array($this->parameters->get($id)[$parameter->getName()])
+        if (
+            is_array($this->parameters->get($id)[$parameter->getName()])
             || ($this->parameters->get($id)[$parameter->getName()] instanceof $type)
         ) {
             return $this->parameters->get($id)[$parameter->getName()];
