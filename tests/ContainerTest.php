@@ -49,7 +49,6 @@ class ContainerTest extends TestCase
                 {
                     return new SplStack();
                 }
-
             },
         ]), false);
 

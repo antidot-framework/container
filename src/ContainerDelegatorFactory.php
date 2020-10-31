@@ -6,6 +6,7 @@ namespace Antidot\Container;
 
 use Closure;
 use Psr\Container\ContainerInterface;
+
 use function array_reduce;
 use function is_callable;
 

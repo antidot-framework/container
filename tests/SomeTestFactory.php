@@ -1,6 +1,5 @@
 <?php
 
-
 namespace AntidotTest\Container;
 
 use Psr\Container\ContainerInterface;
