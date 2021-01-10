@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.1.4](https://github.com/antidot-framework/container/tree/0.1.4) (2021-01-10)
+
+[Full Changelog](https://github.com/antidot-framework/container/compare/0.1.3...0.1.4)
+
+**Implemented enhancements:**
+
+- add php8 support [\#19](https://github.com/antidot-framework/container/pull/19) ([kpicaza](https://github.com/kpicaza))
+
+**Closed issues:**
+
+- PHP 8 Support [\#16](https://github.com/antidot-framework/container/issues/16)
+- Add automtic release workflows [\#15](https://github.com/antidot-framework/container/issues/15)
+
+**Merged pull requests:**
+
+- add PHP 8 support [\#18](https://github.com/antidot-framework/container/pull/18) ([kpicaza](https://github.com/kpicaza))
+- add automatic release workflow [\#14](https://github.com/antidot-framework/container/pull/14) ([kpicaza](https://github.com/kpicaza))
+
 ## [0.1.3](https://github.com/antidot-framework/container/tree/0.1.3) (2020-09-05)
 
 [Full Changelog](https://github.com/antidot-framework/container/compare/0.1.2...0.1.3)
