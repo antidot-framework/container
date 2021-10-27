@@ -165,6 +165,6 @@ class ContainerTest extends TestCase
         $stack = $container->get('some.service');
         $this->assertCount(1, $stack);
         $stack->rewind();
-        $this->assertEquals('Hello World!!!', $stack->current());
+        $this->assertSame('Hello World!!!', $stack->current());
     }
 }
