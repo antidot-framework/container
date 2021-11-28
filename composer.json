@@ -20,11 +20,14 @@
         "psr/container": "^1.0"
     },
     "require-dev": {
-        "phpstan/phpstan": "^0.12",
-        "phpunit/phpunit": "^8.0 || ^9.0",
-        "squizlabs/php_codesniffer": "^3.5",
-        "phpro/grumphp": "~1.0",
-        "symfony/var-dumper": "^5.0"
+        "infection/infection": "^0.25",
+        "phpro/grumphp": "^1.0",
+        "phpstan/phpstan": "^1.2",
+        "phpunit/phpunit": "^9.0",
+        "roave/infection-static-analysis-plugin": "^1.11",
+        "squizlabs/php_codesniffer": "^3.4",
+        "symfony/var-dumper": "^5.0",
+        "vimeo/psalm": "^4.0.0"
     },
     "autoload": {
         "psr-4": {
@@ -39,13 +42,17 @@
     "scripts": {
         "check-all": [
             "@cs-check",
+            "@test",
             "@inspect",
-            "@test"
+            "@psalm",
+            "@infection"
         ],
-        "test": "phpunit",
-        "cs-check": "phpcs src tests",
-        "cs-fix": "phpcbf src tests",
-        "inspect": "phpstan analyse src -l7 --ansi"
+        "cs-check": "phpcs src --colors",
+        "cs-fix": "phpcbf src --colors",
+        "infection": "XDEBUG_MODE=coverage roave-infection-static-analysis-plugin",
+        "inspect": "phpstan analyse src -l7 --ansi",
+        "psalm": "psalm",
+        "test": "phpunit --colors=always"
     },
     "extra": {
         "branch-alias": {

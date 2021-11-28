@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.13.1@5cf660f63b548ccd4a56f62d916ee4d6028e01a3">
+  <file src="src/Builder.php">
+    <InvalidArgument occurrences="1">
+      <code>$containerConfig</code>
+    </InvalidArgument>
+    <MixedArgument occurrences="10">
+      <code>$class</code>
+      <code>$dependencies['aliases'] ?? []</code>
+      <code>$dependencies['dependencies']['aliases'] ?? []</code>
+      <code>$dependencies['dependencies']['factories'] ?? []</code>
+      <code>$dependencies['dependencies']['invokables'] ?? []</code>
+      <code>$dependencies['factories'] ?? []</code>
+      <code>$dependencies['invokables'] ?? []</code>
+      <code>$dependencies['services'] ?? []</code>
+      <code>$factory</code>
+      <code>$service</code>
+    </MixedArgument>
+    <MixedArrayAssignment occurrences="1">
+      <code>$containerConfig['parameters'][$name]</code>
+    </MixedArrayAssignment>
+    <MixedAssignment occurrences="7">
+      <code>$class</code>
+      <code>$containerConfig[$name]</code>
+      <code>$containerConfig['parameters'][$name]</code>
+      <code>$factory</code>
+      <code>$service</code>
+      <code>$service</code>
+      <code>$service</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="2">
+      <code>new $class()</code>
+      <code>new $factory()</code>
+    </MixedMethodCall>
+    <MixedStringOffsetAssignment occurrences="1">
+      <code>$containerConfig['parameters'][$name]</code>
+    </MixedStringOffsetAssignment>
+    <PossiblyInvalidArrayOffset occurrences="1">
+      <code>$containerConfig['parameters'][$name]</code>
+    </PossiblyInvalidArrayOffset>
+    <PossiblyUndefinedMethod occurrences="1">
+      <code>$containerConfig['parameters']</code>
+    </PossiblyUndefinedMethod>
+  </file>
+  <file src="src/Container.php">
+    <MixedAssignment occurrences="1">
+      <code>$callableService</code>
+    </MixedAssignment>
+    <MixedFunctionCall occurrences="1">
+      <code>$callableService($this)</code>
+    </MixedFunctionCall>
+    <MixedInferredReturnType occurrences="1">
+      <code>object</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="2">
+      <code>$callableService($this)</code>
+      <code>$this-&gt;configuredDependencies-&gt;get($id)</code>
+    </MixedReturnStatement>
+  </file>
+  <file src="src/ContainerDelegatorFactory.php">
+    <MixedAssignment occurrences="1">
+      <code>$delegatorName</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="1">
+      <code>new $delegatorName()</code>
+    </MixedMethodCall>
+  </file>
+  <file src="src/InstanceResolver.php">
+    <MixedArgument occurrences="9">
+      <code>$config-&gt;get('parameters')</code>
+      <code>$this-&gt;config-&gt;get($id)</code>
+      <code>$this-&gt;config-&gt;get($id)</code>
+      <code>$this-&gt;config-&gt;get($id)</code>
+      <code>$this-&gt;config-&gt;get($id)</code>
+      <code>$this-&gt;parameters-&gt;get($id)</code>
+      <code>$this-&gt;parameters-&gt;get($id)</code>
+      <code>$this-&gt;parameters-&gt;get($id)[$parameter-&gt;getName()]</code>
+      <code>$this-&gt;parameters-&gt;get($id)[$parameter-&gt;getName()]</code>
+    </MixedArgument>
+    <MixedArrayAccess occurrences="6">
+      <code>$this-&gt;parameters-&gt;get($id)[$parameter-&gt;getName()]</code>
+      <code>$this-&gt;parameters-&gt;get($id)[$parameter-&gt;getName()]</code>
+      <code>$this-&gt;parameters-&gt;get($id)[$parameter-&gt;getName()]</code>
+      <code>$this-&gt;parameters-&gt;get($id)[$parameter-&gt;getName()]</code>
+      <code>$this-&gt;parameters-&gt;get($id)[$parameter-&gt;getName()]</code>
+      <code>$this-&gt;parameters-&gt;get($id)[$parameter-&gt;getName()]</code>
+    </MixedArrayAccess>
+    <MixedAssignment occurrences="1">
+      <code>$callable</code>
+    </MixedAssignment>
+    <MixedFunctionCall occurrences="1">
+      <code>$callable($this-&gt;container)</code>
+    </MixedFunctionCall>
+  </file>
+  <file src="src/MarshalDelegatorsConfig.php">
+    <MixedArgument occurrences="2">
+      <code>$delegatorNames</code>
+      <code>$service</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="4">
+      <code>$callable</code>
+      <code>$delegatorNames</code>
+      <code>$service</code>
+      <code>$serviceFactory</code>
+    </MixedAssignment>
+    <MixedFunctionCall occurrences="1">
+      <code>$callable($container, $service)</code>
+    </MixedFunctionCall>
+    <MixedMethodCall occurrences="1">
+      <code>new $serviceFactory()</code>
+    </MixedMethodCall>
+  </file>
+</files>

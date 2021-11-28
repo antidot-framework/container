@@ -1,6 +1,6 @@
 # https://help.github.com/en/categories/automating-your-workflow-with-github-actions
 
-name: "Check Coding Standards"
+name: "Mutation tests"
 
 on:
   pull_request:
@@ -9,8 +9,8 @@ on:
       - "1.x.x"
 
 jobs:
-  coding-standards:
-    name: "Check Coding Standards"
+  mutation-tests:
+    name: "Mutation tests"
 
     runs-on: ${{ matrix.operating-system }}
 
@@ -57,5 +57,9 @@ jobs:
         if: ${{ matrix.dependencies == 'locked' }}
         run: "composer install --no-interaction --no-progress --no-suggest"
 
-      - name: "Coding Standard"
-        run: "vendor/bin/phpcs"
+      - name: "Infection"
+        run: "vendor/bin/infection"
+        env:
+          INFECTION_BADGE_API_KEY: ${{ secrets.INFECTION_BADGE_API_KEY }}
+          STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
+  

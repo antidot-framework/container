@@ -64,6 +64,7 @@ final class ContainerDelegatorFactory
                     $delegatorName = $container->get($delegatorName);
                 }
 
+                /** @var callable $delegator */
                 $delegator = is_callable($delegatorName) ? $delegatorName : new $delegatorName();
 
                 return $delegator($container, $serviceName, static function () use ($instance) {

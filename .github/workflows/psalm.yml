@@ -1,6 +1,6 @@
 # https://help.github.com/en/categories/automating-your-workflow-with-github-actions
 
-name: "Check Coding Standards"
+name: "Static Analysis by Psalm"
 
 on:
   pull_request:
@@ -9,8 +9,8 @@ on:
       - "1.x.x"
 
 jobs:
-  coding-standards:
-    name: "Check Coding Standards"
+  static-analysis-psalm:
+    name: "Static Analysis by Psalm"
 
     runs-on: ${{ matrix.operating-system }}
 
@@ -57,5 +57,5 @@ jobs:
         if: ${{ matrix.dependencies == 'locked' }}
         run: "composer install --no-interaction --no-progress --no-suggest"
 
-      - name: "Coding Standard"
-        run: "vendor/bin/phpcs"
+      - name: "psalm"
+        run: "vendor/bin/psalm --shepherd --stats"

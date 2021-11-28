@@ -57,7 +57,9 @@ class Builder
                 }
 
                 if (class_exists($factory)) {
-                    return (new $factory())($container);
+                    /** @var callable $callable */
+                    $callable = new $factory();
+                    return $callable($container);
                 }
 
                 throw new InvalidArgumentException('Invalid factory type given.');

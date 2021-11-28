@@ -42,9 +42,13 @@ class MarshalDelegatorsConfig
         // Marshal from factory
         $serviceFactory = $dependencies->get($service);
         return static function (ContainerInterface $container) use ($service, $serviceFactory) {
-            return is_callable($serviceFactory)
-                ? $serviceFactory($container, $service)
-                : (new $serviceFactory())($container, $service);
+            if (is_callable($serviceFactory)) {
+                return $serviceFactory($container, $service);
+            }
+
+            /** @var callable $factory */
+            $factory = new $serviceFactory();
+            return $factory($container, $service);
         };
     }
 }
