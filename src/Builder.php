@@ -66,6 +66,7 @@ class Builder
 
         $services = array_merge(
             $dependencies['services'] ?? [],
+            $dependencies['invokables'] ?? [],
             $dependencies['dependencies']['invokables'] ?? []
         );
 
