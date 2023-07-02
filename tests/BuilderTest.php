@@ -128,9 +128,9 @@ class BuilderTest extends TestCase
                 InvalidArgumentException::class => [
                     'class' => InvalidArgumentException::class,
                     'arguments' => [
-                        'message' => 'Oh Oh!!',
-                        'code' => 0,
-                        'previous' => null,
+                        '$message' => 'Oh Oh!!',
+                        '$code' => 0,
+                        '$previous' => null,
                     ]
                 ],
             ],

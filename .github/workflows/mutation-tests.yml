@@ -6,7 +6,7 @@ on:
   pull_request:
   push:
     branches:
-      - "1.x.x"
+      - "3.x.x"
 
 jobs:
   mutation-tests:
@@ -19,9 +19,8 @@ jobs:
         dependencies:
           - "locked"
         php-version:
-          - "7.4"
-          - "8.0"
           - "8.1"
+          - "8.2"
         operating-system:
           - "ubuntu-latest"
 
@@ -62,4 +61,4 @@ jobs:
         env:
           INFECTION_BADGE_API_KEY: ${{ secrets.INFECTION_BADGE_API_KEY }}
           STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
-  
+

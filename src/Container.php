@@ -24,7 +24,7 @@ class Container implements ContainerInterface
         $this->resolver = new InstanceResolver($this->configuredDependencies, $this->loadedDependencies, $this);
     }
 
-    public function get($id)
+    public function get(string $id)
     {
         if ($this->loadedDependencies->has($id)) {
             return $this->loadedDependencies->get($id);
@@ -40,7 +40,7 @@ class Container implements ContainerInterface
         return $this->loadedDependencies->get($id);
     }
 
-    public function has($id): bool
+    public function has(string $id): bool
     {
         return $this->loadedDependencies->has($id)
             || $this->configuredDependencies->has($id);
